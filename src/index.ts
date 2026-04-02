@@ -1,6 +1,7 @@
 import { bot } from './bot';
 import { globalContext, YCContext } from './config/context';
 
+// Довольно стандартная функция для инициализации бота при деплое
 export const handler = async function (event: any, context: YCContext) {
   globalContext.context = context;
 
@@ -17,10 +18,10 @@ export const handler = async function (event: any, context: YCContext) {
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 
 // Запуск бота для локальной разработки
-// if (process.env.NODE_ENV === 'development') {
-bot.start({
-  onStart: () => {
-    console.log('Bot started');
-  },
-});
-// }
+if (process.env.NODE_ENV === 'development') {
+  bot.start({
+    onStart: () => {
+      console.log('Bot started');
+    },
+  });
+}
