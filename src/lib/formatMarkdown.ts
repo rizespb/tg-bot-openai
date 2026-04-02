@@ -1,5 +1,8 @@
+// Готовые функции из интернет для обработки markdown, который могут возвращать некоторые модели (например, deepSeek)
+// Обрабатывает теги, заменяя их на доступные в телеграм
+
 function escapeHtml(str: string): string {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 export function markdownToHtml(text: string): string {
@@ -10,13 +13,13 @@ export function markdownToHtml(text: string): string {
     .replace(/`([^`]+)`/g, (_match, code: string) => {
       return `<code>${escapeHtml(code)}</code>`;
     })
-    .replace(/\*\*(.+?)\*\*/gs, "<b>$1</b>")
-    .replace(/__(.+?)__/gs, "<b>$1</b>")
-    .replace(/\*([^*\n]+)\*/g, "<i>$1</i>")
-    .replace(/_([^_\n]+)_/g, "<i>$1</i>")
-    .replace(/~~(.+?)~~/gs, "<s>$1</s>")
-    .replace(/^#{1,6}\s+(.+)$/gm, "<b>$1</b>")
+    .replace(/\*\*(.+?)\*\*/gs, '<b>$1</b>')
+    .replace(/__(.+?)__/gs, '<b>$1</b>')
+    .replace(/\*([^*\n]+)\*/g, '<i>$1</i>')
+    .replace(/_([^_\n]+)_/g, '<i>$1</i>')
+    .replace(/~~(.+?)~~/gs, '<s>$1</s>')
+    .replace(/^#{1,6}\s+(.+)$/gm, '<b>$1</b>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/^[-*]{3,}$/gm, "─────────────")
-    .replace(/^>\s?(.+)$/gm, "<blockquote>$1</blockquote>");
+    .replace(/^[-*]{3,}$/gm, '─────────────')
+    .replace(/^>\s?(.+)$/gm, '<blockquote>$1</blockquote>');
 }
