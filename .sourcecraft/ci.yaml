@@ -60,7 +60,7 @@ workflows:
               YC_FUNCTION_TIMEOUT: '90'
               YC_FUNCTION_ENTRYPOINT: index.handler
               SOURCE_PATH: './deploy'
-              ENVIRONMENT: 'BOT_TOKEN=${{ inputs.bot-token }},API_DEEPSEEK_KEY=${{ inputs.API_DEEPSEEK_KEY }}'
+              ENVIRONMENT: 'BOT_TOKEN=${{ inputs.bot-token }},API_OPENROUTER_KEY=${{ inputs.API_OPENROUTER_KEY }}'
               PUBLIC: true
             image: cr.yandex/sourcecraft/yc-function:latest
 
